@@ -1,0 +1,21 @@
+.example-spacer{
+    flex:1 1 auto;
+}
+
+
+/*.example-card{
+  
+    max-block-size: 700px;
+   
+  }*/
+  .carddiv{
+    margin-left: 100px;
+    margin-right:100px;
+    margin-top: 30px;
+  }
+  mat-card img{
+  /*this makes de image in src fit to the size of specified below*/
+    width: 90%; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+    height: 90%;
+  }
+

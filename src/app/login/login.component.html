@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 10%;
+  font-family: Arial, Helvetica, sans-serif;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.bg-img {
+  /* The image used */
+  background-image: url("assets/thai-food.jpg");
+
+  min-height: 675px;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
+}
+
+/* Add styles to the form container */
+.container {
+  position: absolute;
+  left:40%;
+  top:30%;
+  margin: 30px;
+  max-width: 300px;
+  max-height: 800px;
+  padding: 25px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 50%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+
+<div class="bg-img">
+ <!-- <form action="/action_page.php" class="container">-->
+   <!-- <label for="email"><b>Email</b></label>
+    <input type="email" matInput required [(ngModel)]="userLoginObj.username" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"><br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" matInput required [(ngModel)]="userLoginObj.password">-->
+    <form [formGroup]="registrationform" action="/action_page.php" class="container" (ngSubmit)="onSubmit()" >
+            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                               <mat-label >Email</mat-label>
+                                               <input type="email" matInput formControlName="email" [class.is-invalid]="email.invalid&&email.touched">
+                                              
+                                           <div *ngIf="email.errors?.required&&email.invalid&&email.touched">
+                                                   <small class="text-danger">Email ID is required</small>
+                                                   </div>
+                           
+                                                   <div *ngIf="email.errors?.pattern&&email.invalid&&email.touched">
+                                                   <small class="text-danger">Enter valid email id only</small>
+                                                   </div>
+                           
+                                               </mat-form-field><br/>
+           
+           <!-- Password-->
+            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+                                               <mat-label >Password</mat-label>
+                                               <input type="password" matInput formControlName="password" [class.is-invalid]="password.invalid&&password.touched">
+                                               
+                                               <!---->
+                                               <div *ngIf="password.errors?.required&&password.invalid&&password.touched">
+                                                   <small class="text-danger">Password is required</small>
+                                                   </div>
+                           
+                                                   <div *ngIf="password.errors?.minLength&&password.invalid&&password.touched">
+                                                   <small class="text-danger">Enter valid email id only</small>
+                                                   </div>
+                                               <!---->
+                                               </mat-form-field><br/>
+                           
+                                               <a href="/signup" routerlink="/signup" routerlinkActive="active"  >Create a new account?</a>    
+    <button routerlink="/home" routerlinkActive="active" (click)="testlogin()" type="submit" class="btn">Login</button><br/>
+   
+  </form>
+</div>
+
+
+</body>
+</html>

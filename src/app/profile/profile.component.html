@@ -1,0 +1,47 @@
+
+<div *ngFor="let item of userDetails">
+    <label> First Name: </label>
+<input   matInput type="text" [(ngModel)]="item.fname"><br>
+<label> Last Name: </label>
+<input   matInput type="text" [(ngModel)]="item.lname">   <br>
+<label> email: </label>
+<input   matInput type="text" [(ngModel)]="item.email">   <br>
+<label> Mobile Number: </label>
+<input   matInput type="text" [(ngModel)]="item.MobileNo">   <br>
+<label> Gender </label>
+<input   matInput type="text" [(ngModel)]="item.gender">         <br>
+<label> Date of Birth </label>
+<input   matInput type="text" [(ngModel)]="item.DOB">   <br>
+<label> Password: </label>
+<input   matInput type="password" [(ngModel)]="item.Password">  <br> 
+<!--address from here-->
+<div *ngFor="let item1 of item.address" > 
+        <label> Block Number: </label>
+        <input   matInput type="text" [(ngModel)]="item1.blockNo">  <br>    
+
+        <label> Floor Number: </label>
+        <input   matInput type="text" [(ngModel)]="item1.FloorNo">  <br>    
+
+        <label> Unit Number </label>
+        <input   matInput type="text" [(ngModel)]="item1.UnitNo">  <br>    
+
+        <label> StreetName </label>
+        <input   matInput type="text" [(ngModel)]="item1.StreetName">  <br>    
+
+        <label> BuildingName </label>
+        <input   matInput type="text" [(ngModel)]="item1.BuildingName">  <br>    
+
+    </div>
+ 
+<!--<label> Floor Number </label>
+<input   matInput type="text" [(ngModel)]="item.lname">
+<label> Unit Number </label>
+<input   matInput type="text" [(ngModel)]="item.lname">
+<label> Street Name </label>
+<input   matInput type="text" [(ngModel)]="item.lname">
+<label> Building Name </label>
+<input   matInput type="text" [(ngModel)]="item.lname">
+<label>Posatl code </label>
+<input   matInput type="text" [(ngModel)]="item.lname">
+</div>-->
+</div>

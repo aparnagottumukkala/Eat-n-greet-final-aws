@@ -1,0 +1,40 @@
+<div>
+    <mat-toolbar class="fixed-header" color="primary">
+        <mat-toolbar-row>
+     <!--<a href="/" > Eat & Greeth </a>-->
+     <span style="cursor:pointer" routerLink="/home" (click)="homeitself()">Eat-N-Greet</span>
+           
+            <span class="example-spacer"></span>
+        
+    <button mat-button [matMenuTriggerFor]="dropdownoptions">Dropdown<mat-icon>keyboard_arrow_down</mat-icon></button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-menu #dropdownoptions="matMenu">
+      <button mat-menu-item  routerlink='/login' routerlinkActive="active" (click)="logout()" >Logout</button>
+      <button mat-menu-item routerlink='/My-orders' routerlinkActive="active" (click)="orders()" >My-orders</button>
+      <button mat-menu-item routerlink='/postAMeal' routerlinkActive="active" (click)="postMeal()">Post-A-Meal</button>
+    <!--  <button  mat-menu-item routerlink='/My-wallet' routerlinkActive="active" (click)="wallet()" >Wallet</button>   --> 
+    </mat-menu>
+    <div class="split left">
+        <div class="centered">
+          <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+      
+        </div>
+      </div>
+      
+      <div class="split right">
+        <div class="centered">
+          
+          <h2> <pre> 
+Name : krishna
+Location         : punggol fields 78-861
+Reservation Date : 2019-09-13T01:01
+Serving Date     : 2019-09-01T01:01
+Options          : DineIn
+Price            : 20
+Number of Persons to be served (Quantity) : 3
+Item names       : chicken
+Description      : This is made of chicken </pre></h2>
+     
+        </div>
+      </div>

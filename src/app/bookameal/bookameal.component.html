@@ -1,0 +1,93 @@
+<div>
+                <mat-toolbar class="fixed-header" color="primary">
+                    <mat-toolbar-row>
+                 <!--<a href="/" > Eat & Greeth </a>-->
+                 <span style="cursor:pointer" routerLink="/home" (click)="homeitself()">Eat-N-Greet</span>
+                       
+                        <span class="example-spacer"></span>
+                    
+                <button mat-button [matMenuTriggerFor]="dropdownoptions">Dropdown<mat-icon>keyboard_arrow_down</mat-icon></button>
+                    </mat-toolbar-row>
+                </mat-toolbar>
+                <mat-menu #dropdownoptions="matMenu">
+                  <button mat-menu-item  routerlink='/login' routerlinkActive="active" (click)="logout()" >Logout</button>
+                  <button mat-menu-item routerlink='/My-orders' routerlinkActive="active" (click)="orders()" >My-orders</button>
+                  <button mat-menu-item routerlink='/postAMeal' routerlinkActive="active" (click)="postMeal()">Post-A-Meal</button>
+                <!--  <button  mat-menu-item routerlink='/My-wallet' routerlinkActive="active" (click)="wallet()" >Wallet</button>   --> 
+                </mat-menu>
+                <div class="split left">
+                    <div class="centered">
+                        <mat-card>
+                      <ngx-gallery [options]="galleryOptions" [images]="galleryImages"></ngx-gallery>
+                    </mat-card><br>
+                     <button mat-raised-button color="primary" style="margin-right:5px;" (click)="onBook()">Book Now</button>
+                     <button mat-raised-button color="primary" style="margin-right:5px;" (click)="onBack()">Back</button>
+                    </div>
+                  </div>
+               
+                  
+                  <div class="split right">
+                    <div class="centered">
+                        <mat-card  class="example-card" >
+                            <table>
+                                <tr>
+                                  <td>  Name </td> 
+                                  <td> {{obj.firstName}} </td>
+                                </tr>
+                                <tr>
+                                  <td>  Address </td> 
+                                  <td *ngFor="let item of obj.address" > {{item.blockNo}} {{item.FloorNo}} {{item.UnitNo}} {{item.StreetName}} {{item.BuildingName}} {{item.postCode}}</td>
+                                  </tr>
+                                  <tr> 
+                                    <td>Serving Date</td> <td>{{obj.servingDate}}</td>
+                                  </tr>
+                                  <tr> 
+                                      <td>paymentDeadline</td> <td>{{obj.paymentDeadline}}</td>
+                                    </tr>
+                                    <tr> 
+                                        <td>Reservation Date</td> <td> {{obj.reservationDeadline}}</td>
+                                      </tr>
+                                      <tr> 
+                                          <td>Preference Type</td> <td>{{obj.preferenceType}}</td>
+                                        </tr>
+                                        <tr> 
+                                            <td>Price</td> <td>{{obj.price}}</td>
+                                          </tr>
+                                          <tr> 
+                                              <td>Number of Persons to be served</td> <td>{{obj.maxPeopleCount}}</td>
+                                            </tr>
+                                            <tr> 
+                                                <td>Actual people count</td> <td>{{obj.actualPeopleCount}}</td>
+                                              </tr>
+                                              <tr> 
+                                                  <td>Items List</td> 
+                                                  <td >
+
+                                                  <div *ngFor="let item of obj.itemList">{{item.name}}
+                                                    </div>
+                                                  </td>
+                                                </tr>
+                                                <tr> 
+                                                    <td>Description</td> <td>{{obj.note}}</td>
+                                                  </tr>
+
+                              </table> 
+                        </mat-card> 
+                    </div>
+                  </div>
+<!--
+  <h6> 
+Name : </h6> <pre> {{obj.firstName}}</pre> <br>
+<h5>   Address         : {{obj.address}} <br>
+Serving Date     : {{obj.servingDate}}<br>
+paymentDeadline  : {{obj.paymentDeadline}}<br>
+Reservation Date : {{obj.reservationDeadline}} <br>
+Preference Type          : {{obj.preferenceType}} <br>
+Price            : {{obj.price}}<br>
+Number of Persons to be served (Quantity) : {{obj.maxPeopleCount}}<br>
+Actual people count : {{obj.actualPeopleCount}}<br>
+Items List       : {{obj.itemList }}<br>
+                                Description      : {{obj.note}}<br>
+                              </h5>
+                    
+-->

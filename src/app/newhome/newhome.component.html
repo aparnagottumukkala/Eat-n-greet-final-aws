@@ -1,0 +1,46 @@
+<div>
+        
+    <mat-toolbar class="fixed-header" color="primary">
+            <mat-toolbar-row>
+         <!--<a href="/" > Eat & Greeth </a>-->
+         <span style="cursor:pointer" routerLink="/home" (click)="homeitself()">Eat-N-Greet</span>
+               
+                <span class="example-spacer"></span>
+            
+        <button mat-button [matMenuTriggerFor]="dropdownoptions">Dropdown<mat-icon>keyboard_arrow_down</mat-icon></button>
+            </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-menu #dropdownoptions="matMenu">
+          <button mat-menu-item  routerlink='/login' routerlinkActive="active" (click)="logout()" >Logout</button>
+          <button mat-menu-item routerlink='/My-orders' routerlinkActive="active" (click)="orders()" >My-orders</button>
+          <button mat-menu-item routerlink='/postAMeal' routerlinkActive="active" (click)="postMeal()">Post-A-Meal</button>
+      <!--   <button  mat-menu-item routerlink='/profile' routerlinkActive="active" (click)="Profile()" >Profile</button> -->
+        </mat-menu>
+        </div>
+        <!-- card design here -->
+        <div class="carddiv">
+            <mat-grid-list cols="3" rowHeight="400px"  gutterSize="20px">
+                <mat-grid-tile  class="divcls" *ngFor="let user1 of userinfo">
+              
+                   <mat-card  class="example-card"  fxLayoutWrap="wrap" fxLayout="column"  fxFlex="150%" fxLayoutGap="0.1px">
+                        <mat-card-header>
+                   <!-- <mat-card-title *ngFor="let item of user1.itemList"> Cusine : {{item.name}}</mat-card-title>-->
+                    <mat-card-title>
+                        <div>Cusine </div> <div *ngFor="let item of user1.itemList"> {{item.name}} </div></mat-card-title>
+                    </mat-card-header>
+                  
+                   <img class="image" fxFlex="1%" mat-card-image src="{{user1.uri}}">
+                    <mat-card-content>{{user1.note}}
+                    </mat-card-content>
+                     <mat-card-actions>
+                  <button md-button routerlink="/bookameal" routerLinkActive="active" (click)="[newMessage(user1),bookmeal()]">View Deatils</button>
+               <!--   <button md-button>SHARE</button> -->
+                </mat-card-actions>
+                    </mat-card> 
+              
+                </mat-grid-tile>
+              </mat-grid-list>
+        </div>
+          
+        
+        

@@ -1,0 +1,93 @@
+<div>
+    <mat-toolbar class="fixed-header" color="primary">
+        <mat-toolbar-row>
+     <!--<a href="/" > Eat & Greeth </a>-->
+     <span style="cursor:pointer" routerLink="/home" (click)="homeitself()">Eat-N-Greet</span>
+           
+            <span class="example-spacer"></span>
+        
+    <button mat-button [matMenuTriggerFor]="dropdownoptions">Dropdown<mat-icon>keyboard_arrow_down</mat-icon></button>
+        </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-menu #dropdownoptions="matMenu">
+      <button mat-menu-item  routerlink='/login' routerlinkActive="active" (click)="logout()" >Logout</button>
+      <button mat-menu-item routerlink='/My-orders' routerlinkActive="active" (click)="orders()" >My-orders</button>
+      <button mat-menu-item routerlink='/postAMeal' routerlinkActive="active" (click)="postMeal()">Post-A-Meal</button>
+    </mat-menu>
+    </div>
+ <div>
+    <form [formGroup]="MealForm" (ngSubmit)="onSubmit()" >
+      <div class="row"  *ngIf="showMsg">
+          <div class="col-xs-12">
+            <p class="alert alert-success">
+                <strong>Posted meal Success!</strong>
+            </p>
+          </div>
+        </div>
+        <div class="mat-card-cvr"> 
+             <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+              <mat-label >Quantity</mat-label>
+              <input type="number" matInput required formContronName="quantity" min="1" (keydown.tab)="checkquantity($event)">
+              <div *ngIf="iserror1">
+                <small class="text-danger">Enter valid number</small>
+                </div>
+            </mat-form-field><br/>
+            <mat-form-field floatLabel="auto" appearance="standard" color="primary">
+              <mat-label>Price</mat-label>
+              <input type="number" formControlName="price" matInput required min="1" (keydown.tab)="checkPrice($event)">
+<div *ngIf="isprice">
+  <small class =text-danger> enter a valid price</small>
+</div>
+            </mat-form-field>
+                    <mat-form-field>
+                      <input matInput type="datetime-local" placeholder="Serving date" formControlName="servingdate" required useValueAsDate>
+                    </mat-form-field><br>
+                      <!--Try date and time-->
+                      <mat-form-field>
+                        <input matInput type="datetime-local" placeholder="Reservation Date" (keydown.tab)="compareDate()" formControlName="reservationdate" required useValueAsDate>
+                      </mat-form-field><br>
+                      <div *ngIf="iserror2">
+                        <small class="text-danger">Serving date should be greater than reservation date</small>
+                        </div>
+                     <!-- dineIn/Take Away-->
+              <mat-radio-group aria-label="Select an option"  color="primary" formControlName="options" (keydown.tab)="checkoptions($event)">
+                <mat-radio-button value="1" >DineIn</mat-radio-button>
+                      <mat-radio-button value="2">TakeAway</mat-radio-button>
+                    </mat-radio-group><br>
+                    <div *ngIf="radiovar">
+                      <small class = "text-danger"> select one value</small>
+                    </div>
+                    <!-- Food Items-->
+        <mat-form-field class="example-chip-list">
+          <mat-chip-list #chipList aria-label="Fruit selection"> 
+          
+            <mat-chip
+              *ngFor="let fruit of fruits"
+              [selectable]="selectable"
+              [removable]="removable"
+              (removed)="remove(fruit)">
+              {{fruit}}
+              <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <input
+              placeholder="New food item..."
+              #fruitInput
+              [formControl]="fruitCtrl"
+              [matAutocomplete]="auto"
+              [matChipInputFor]="chipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              [matChipInputAddOnBlur]="addOnBlur"
+              (matChipInputTokenEnd)="add($event)"  required>
+          <!--formControlName="foodchip" (keydown.tab)="checkitems($event)"-->
+            </mat-chip-list>
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+            <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+              {{fruit.name}}
+             
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+         <button   mat-raised-button color="primary" style="margin-right:5px;"  > POST MEAL </button> 
+      </div>
+        </form>
+      </div>
